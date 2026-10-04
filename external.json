@@ -1,12 +1,13 @@
 {
   "till_info": {
-    "name": "Victonic Tips",
-    "number": "5511976",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnL9IW7PZLAv3UB5atwGArWtsJDDO2wYfNZIeJurR20indXZ5hHzNwwFtV&s=10"
+    "name": "Quick Call Selections",
+    "number": "5150225",
+    "image": "https://images.unsplash.com/photo-1557992260-ec58e38d363c?auto=format&fit=crop&w=300&q=80"
   },
   "contact_details": {
-    "whatsapp_url": "https://chat.whatsapp.com/IHZfy33mi7t0noPZ8bA3t8",
-    "telegram_url": "https://t.me/+mdwAA681pe1hOTRk"
+    "whatsapp_url": "https://wa.me/254713804279?text=I'm%20interested%20in%20your%20sure%20tips%20today",
+    "twitter_url": "https://twitter.com/victonic_sports",
+    "telegram_url": "https://t.me/+GEkAL_4kqyJjNDc0"
   },
   
   "countries": [
@@ -17,20 +18,24 @@
       "currency": "KSh",
       "rate_to_kes": 1,
       "type": "automated"
-    }
+    },
+    
   
   "free_tip": {
-    "country": "International,",
-    "league": "UEFA Nations League",
-    "time": "Today 9:45 EAT",
-    "teamA": "Greece",
-    "teamB": "Germany",
-    "pick": "Pick: Over 2.5 Goals",
-    "confidence": "98"
+    "country": "England",
+    "league": "Premier League",
+    "time": "Today 17:00 EAT",
+    "teamA": "Arsenal",
+    "teamB": "Chelsea",
+    "pick": "Pick: 1 ",
+    "confidence": "99"
   },
 
   
   "packages": [
+    { "id": "draw1", "title": "1 Draw Package", "type": "flat", "price_kes": 150 },
+    { "id": "draw2", "title": "2 Draws Package", "type": "flat", "price_kes": 250 },
+    { "id": "draw3", "title": "3 Draws Package", "type": "flat", "price_kes": 350 },
     { "id": "odds2", "title": "2 Odds Package", "type": "flat", "price_kes": 100 },
     { "id": "odds5", "title": "5 Odds Package", "type": "flat", "price_kes": 200 },
     { "id": "odds10", "title": "10 Odds Package", "type": "flat", "price_kes": 300 },
