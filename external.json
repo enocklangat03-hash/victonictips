@@ -1,0 +1,256 @@
+{
+  "till_info": {
+    "name": "Quick Call Selections",
+    "number": "5150225",
+    "image": "https://images.unsplash.com/photo-1557992260-ec58e38d363c?auto=format&fit=crop&w=300&q=80"
+  },
+  "contact_details": {
+    "whatsapp_url": "https://wa.me/254713804279?text=I'm%20interested%20in%20your%20sure%20tips%20today",
+    "twitter_url": "https://twitter.com/victonic_sports",
+    "telegram_url": "https://t.me/+GEkAL_4kqyJjNDc0"
+  },
+  
+  "countries": [
+    {
+      "code": "ke",
+      "name": "Kenya",
+      "flag": "🇰🇪",
+      "currency": "KSh",
+      "rate_to_kes": 1,
+      "type": "automated"
+    },
+    
+    {
+      "code": "ug",
+      "name": "Uganda",
+      "flag": "🇺🇬",
+      "currency": "UGX",
+      "rate_to_kes": 28.5,
+      "type": "manual",
+      "methods": [
+        {
+          "provider": "MTN Uganda (to Safaricom M-Pesa)",
+          "phone": "254713804279",
+          "steps": [
+            "Dial *165# on your mobile line.",
+            "Select 1: Send Money.",
+            "Choose 3: International Transfer.",
+            "Select 1: Safaricom M-Pesa.",
+            "Enter recipient phone number: {phone}",
+            "Enter amount in UGX ({amount}) and state reason.",
+            "Enter your MTN MoMo PIN to authorize."
+          ]
+        },
+
+        
+        {
+          "provider": "Airtel Uganda",
+          "phone": "254739162763",
+          "steps": [
+            "Dial *185#.",
+            "Select 1: Send Money.",
+            "Choose 4: International Transfer.",
+            "Select Kenya.",
+            "Enter recipient phone number: {phone}",
+            "Enter amount ({amount}), input transaction reason, and confirm with Airtel Money PIN."
+          ]
+        }
+      ]
+    },
+
+    
+    {
+      "code": "tz",
+      "name": "Tanzania",
+      "flag": "🇹🇿",
+      "currency": "TZS",
+      "rate_to_kes": 20.0,
+      "type": "manual",
+      "methods": [
+        {
+          "provider": "Vodacom M-Pesa Tanzania",
+          "phone": "254713804279",
+          "steps": [
+            "Dial *150*00#.",
+            "Select Send Money, then select International Transfers.",
+            "Choose M-Pesa Kenya.",
+            "Enter recipient phone number: {phone}",
+            "Input amount in TZS ({amount}), review automated conversion rates, and enter M-Pesa PIN."
+          ]
+        },
+
+        
+        {
+          "provider": "Airtel Tanzania",
+          "phone": "254713804279",
+          "steps": [
+            "Dial *150*60#.",
+            "Select 1: Send Money.",
+            "Choose 5: Send Money Abroad.",
+            "Select Kenya.",
+            "Select 1: Mobile Wallet and choose either Airtel Kenya or M-Pesa Kenya.",
+            "Enter recipient mobile number: {phone}",
+            "Enter amount in TZS ({amount}), pick transfer reason, and enter Airtel Money PIN."
+          ]
+        }
+      ]
+    },
+
+    
+    {
+      "code": "rw",
+      "name": "Rwanda",
+      "flag": "🇷🇼",
+      "currency": "RWF",
+      "rate_to_kes": 10.0,
+      "type": "manual",
+      "methods": [
+        {
+          "provider": "MTN Rwanda",
+          "phone": "254713804279",
+          "steps": [
+            "Dial *182#.",
+            "Select Send Money, then select International Remittance / Cross Border.",
+            "Choose Kenya and select destination wallet (M-Pesa or Airtel Money).",
+            "Enter recipient phone number: {phone}",
+            "Enter amount in RWF ({amount}) and confirm with MTN MoMo PIN."
+          ]
+        },
+        
+        {
+          "provider": "Airtel Rwanda",
+          "phone": "254713804279",
+          "steps": [
+            "Dial *182# or open MyAirtel App.",
+            "Choose Airtel Money, then select Send Money.",
+            "Click International and select Kenya.",
+            "Enter phone number: {phone}, input amount ({amount}), and confirm using Airtel PIN."
+          ]
+        }
+      ]
+    },
+
+    
+    {
+      "code": "zm",
+      "name": "Zambia",
+      "flag": "🇿🇲",
+      "currency": "ZMW",
+      "rate_to_kes": 0.21,
+      "type": "manual",
+      "methods": [
+        {
+          "provider": "Airtel Zambia",
+          "phone": "254713804279",
+          "steps": [
+            "Dial *115#.",
+            "Navigate to Airtel Money, select Send Money, and choose International Transfer.",
+            "Select Kenya as destination.",
+            "Enter recipient phone number starting with country code 254: {phone}",
+            "Input amount ({amount}), review currency exchange window, and enter Airtel T-PIN."
+          ]
+        }
+      ]
+    },
+
+    
+    {
+      "code": "mw",
+      "name": "Malawi",
+      "flag": "🇲🇼",
+      "currency": "MWK",
+      "rate_to_kes": 13.5,
+      "type": "manual",
+      "methods": [
+        {
+          "provider": "Airtel Malawi",
+          "phone": "254713804279",
+          "steps": [
+            "Dial *211#.",
+            "Navigate to Airtel Money, select Send Money, and choose International Transfer.",
+            "Select Kenya as destination.",
+            "Enter recipient phone number starting with country code 254: {phone}",
+            "Input amount ({amount}), review currency exchange window, and enter Airtel T-PIN."
+          ]
+        }
+      ]
+    }
+  ],
+
+  
+  "free_tip": {
+    "country": "England",
+    "league": "Premier League",
+    "time": "Today 17:00 EAT",
+    "teamA": "Arsenal",
+    "teamB": "Chelsea",
+    "pick": "Pick: 1 & Over 1.5 Goals",
+    "confidence": "92"
+  },
+
+  
+  "packages": [
+    { "id": "odds2", "title": "2 Odds Package", "type": "flat", "price_kes": 100 },
+    { "id": "odds5", "title": "5 Odds Package", "type": "flat", "price_kes": 200 },
+    { "id": "odds10", "title": "10 Odds Package", "type": "flat", "price_kes": 300 },
+    { "id": "vip1000", "title": "VIP Tips Package", "type": "flat", "price_kes": 1000, "isMostPopular": true },
+    { 
+      "id": "jackpot", 
+      "title": "SportPesa & Betika Jackpots", 
+      "type": "jackpot", 
+      "jackpots": [
+        { "bookmaker": "SportPesa Mega", "amount_kes": 200 },
+        { "bookmaker": "Betika Midweek", "amount_kes": 150 }
+      ]
+    }
+  ],
+
+  
+  "tips": {
+    "draw1": [ { "teamA": "Valencia", "teamB": "Sevilla", "tip": "Draw", "odds": "3.20" } ],
+    "draw2": [ { "teamA": "Everton", "teamB": "Fulham", "tip": "Draw", "odds": "3.40" }, { "teamA": "Lazio", "teamB": "Roma", "tip": "Draw", "odds": "3.10" } ],
+    "draw3": [ { "teamA": "Nantes", "teamB": "Rennes", "tip": "Draw", "odds": "3.15" }, { "teamA": "Genoa", "teamB": "Torino", "tip": "Draw", "odds": "3.00" }, { "teamA": "Mainz", "teamB": "Bremen", "tip": "Draw", "odds": "3.30" } ],
+    "odds2": [ { "teamA": "Man City", "teamB": "Burnley", "tip": "1 & Over 2.5", "odds": "2.10" } ],
+    "odds5": [ { "teamA": "Liverpool", "teamB": "Aston Villa", "tip": "1 & GG", "odds": "2.80" }, { "teamA": "Bayern", "teamB": "Dortmund", "tip": "Over 3.5", "odds": "1.90" } ],
+    "odds10": [ { "teamA": "Arsenal", "teamB": "Chelsea", "tip": "X2", "odds": "1.80" }, { "teamA": "Napoli", "teamB": "Milan", "tip": "1", "odds": "2.20" }, { "teamA": "PSG", "teamB": "Monaco", "tip": "GG & Over 2.5", "odds": "2.55" } ],
+    "vip1000": [ { "teamA": "Inter", "teamB": "Juventus", "tip": "1", "odds": "2.15" }, { "teamA": "Real Sociedad", "teamB": "Athletic Bilbao", "tip": "Under 2.5", "odds": "1.65" }, { "teamA": "Benfica", "teamB": "Porto", "tip": "GG", "odds": "1.85" } ],
+    "jackpot-sportpesa-mega": [ { "teamA": "Match 1", "teamB": "Team B", "tip": "1", "odds": "-" } ],
+    "jackpot-betika-midweek": [ { "teamA": "Match 1", "teamB": "Team B", "tip": "X", "odds": "-" } ]
+  },
+
+  
+  "history": [
+    {
+      "date": "Yesterday",
+      "categories": {
+        "1 Draw": [ { "country": "spain", "teamA": "Getafe", "teamB": "Alaves", "prediction": "Draw", "score": "1-1", "odds": "3.10", "result": "WON" } ],
+        "2 Draws": [ 
+            { "country": "italy", "teamA": "Verona", "teamB": "Empoli", "prediction": "Draw", "score": "0-0", "odds": "3.25", "result": "WON" },
+            { "country": "france", "teamA": "Lens", "teamB": "Lille", "prediction": "Draw", "score": "1-1", "odds": "3.30", "result": "WON" }
+        ],
+        "3 Draws": [ 
+            { "country": "germany", "teamA": "Bochum", "teamB": "Koln", "prediction": "Draw", "score": "2-2", "odds": "3.40", "result": "WON" },
+            { "country": "england", "teamA": "Crystal Palace", "teamB": "West Ham", "prediction": "Draw", "score": "1-1", "odds": "3.15", "result": "WON" },
+            { "country": "italy", "teamA": "Lecce", "teamB": "Cagliari", "prediction": "Draw", "score": "0-0", "odds": "3.00", "result": "WON" }
+        ],
+        "2 Odds": [ { "country": "england", "teamA": "Arsenal", "teamB": "Chelsea", "prediction": "1", "score": "2-0", "odds": "2.10", "result": "WON" } ],
+        "5 Odds": [ 
+            { "country": "spain", "teamA": "Real Madrid", "teamB": "Sevilla", "prediction": "1 & Over 2.5", "score": "3-1", "odds": "2.30", "result": "WON" },
+            { "country": "germany", "teamA": "Bayern Munich", "teamB": "Stuttgart", "prediction": "1", "score": "2-0", "odds": "1.85", "result": "WON" },
+            { "country": "italy", "teamA": "Juventus", "teamB": "Torino", "prediction": "Under 2.5", "score": "1-0", "odds": "1.50", "result": "WON" }
+        ],
+        "10 Odds": [ 
+            { "country": "france", "teamA": "PSG", "teamB": "Marseille", "prediction": "1 & GG", "score": "3-1", "odds": "2.80", "result": "WON" },
+            { "country": "england", "teamA": "Liverpool", "teamB": "Newcastle", "prediction": "1", "score": "2-0", "odds": "1.75", "result": "WON" },
+            { "country": "italy", "teamA": "Napoli", "teamB": "Roma", "prediction": "GG", "score": "1-1", "odds": "1.90", "result": "WON" },
+            { "country": "spain", "teamA": "Barcelona", "teamB": "Girona", "prediction": "Over 2.5", "score": "2-1", "odds": "1.65", "result": "WON" }
+        ],
+        "VIP Tips": [ 
+            { "country": "italy", "teamA": "Inter", "teamB": "Lazio", "prediction": "1", "score": "2-0", "odds": "1.95", "result": "WON" },
+            { "country": "england", "teamA": "Man City", "teamB": "Aston Villa", "prediction": "1 & Over 2.5", "score": "3-1", "odds": "2.05", "result": "WON" },
+            { "country": "germany", "teamA": "Leverkusen", "teamB": "Dortmund", "prediction": "GG & Over 2.5", "score": "2-2", "odds": "2.15", "result": "WON" }
+        ]
+      }
+    }
+  ]
+}

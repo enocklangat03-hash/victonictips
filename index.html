@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <!-- SEO OPTIMIZATION -->
+    <meta name="author" content="mzukatips">
+    <meta name="description" content="mzukatips provides sure soccer betting tips, daily high odds accumulators, correct score predictions, and winning jackpot picks. Get today's sure bets.">
+    <meta name="keywords" content="soccer predictions, betting tips, sure tips, football odds, correct score, jackpot predictions, mzukatips, free tips">
+    <link rel="canonical" href="https://mzukatips.co.ke/">
+    
+    <!-- OPEN GRAPH / SOCIAL MEDIA -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mzukatips.co.ke/">
+    <meta property="og:title" content="mzukatips | Sure Soccer Betting Tips & Predictions">
+    <meta property="og:description" content="Get daily sure odds accumulators, correct score predictions and premium jackpot picks. Join mzukatips for guaranteed winning tips.">
+    <meta property="og:image" content="https://mzukatips.co.ke/social-banner.jpg">
+
+    <!-- TWITTER CARDS -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="mzukatips | Sure Soccer Betting Tips">
+    <meta name="twitter:description" content="Get daily sure odds accumulators, correct score predictions and premium jackpot picks.">
+    
+    <title>MzukaTips | Sure Soccer Betting Tips & Daily Predictions</title>
+
+    <link rel="icon" type="image/gif" href="/tab.gif"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Paytone+One&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg:          #0b0e14;
+            --card-bg:     rgba(22, 27, 38, 0.85);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-hover:  #1e2532;
+            --green:       #00E676;
+            --green-glow:  rgba(0, 230, 118, 0.25);
+            --red:         #FF5252;
+            --gold:        #FFD700;
+            --gold-glow:   rgba(255, 215, 0, 0.2);
+            --purple:      #7E57C2;
+            --muted:       #8A94A6;
+            
+            --draw1:  #1E88E5;
+            --draw2:  #3F51B5;
+            --draw3:  #7E57C2;
+            --odds2:  #00ACC1;
+            --odds5:  #E91E63;
+            --odds10: #FF9800;
+        }
+
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            background: radial-gradient(circle at top center, #161c28 0%, var(--bg) 70%);
+            color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* SPLASH & COUNTRY SELECTOR */
+        #splash-screen {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: var(--bg); display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        #splash-screen .brand-title { font-family: 'Paytone One', sans-serif; color: var(--green); text-align: center; animation: pulse 1.5s infinite; }
+        #splash-screen .splash-line1 { font-size: clamp(2rem, 9vw, 3.2rem); letter-spacing: 0.04em; display: block; text-shadow: 0 0 20px var(--green-glow); }
+        #splash-screen .splash-line2 { font-size: clamp(1.4rem, 6.5vw, 2.2rem); letter-spacing: 0.12em; opacity: 0.9; color: var(--gold); display: block; }
+
+        #country-screen {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: var(--bg); display: none; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 9998; padding: 20px; text-align: center;
+        }
+        #country-screen h2 { font-family: 'Paytone One', sans-serif; color: var(--gold); margin-bottom: 25px; text-shadow: 0 0 15px var(--gold-glow); }
+        #country-buttons-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            width: 100%;
+            max-width: 500px;
+        }
+        .country-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--green);
+            color: #fff;
+            font-size: 1.2rem;
+            font-family: 'Paytone One', sans-serif;
+            padding: 16px 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .country-btn:hover {
+            background: var(--green);
+            color: #0B0E14;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 25px var(--green-glow);
+        }
+
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+        /* APP CARDS & GLASSMORPHISM */
+        #main-app { display: none; }
+        .container { max-width: 900px; padding: 20px 12px; }
+
+        .seo-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 20px;
+        }
+        .seo-header h1 {
+            font-family: 'Paytone One', sans-serif;
+            color: var(--green);
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            text-shadow: 0 0 15px var(--green-glow);
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        .seo-header p {
+            color: var(--gold);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-bottom: 24px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .card:hover {
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+        .card-header {
+            font-family: 'Paytone One', sans-serif;
+            font-size: 1.35rem;
+            text-align: center;
+            padding: 14px 20px;
+            border-bottom: none;
+            letter-spacing: 0.5px;
+        }
+        .card-body { padding: 20px 16px; text-align: center; }
+
+        /* BUTTONS & BADGES */
+        .btn-custom {
+            background: linear-gradient(135deg, var(--green) 0%, #00B0FF 100%);
+            color: #0B0E14;
+            font-weight: 700;
+            border-radius: 10px;
+            padding: 12px 24px;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 15px var(--green-glow);
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 230, 118, 0.4);
+            color: #0B0E14;
+        }
+        .pkg-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #FFD700, #FF9800);
+            color: #000;
+            padding: 3px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 10px var(--gold-glow);
+        }
+
+        /* TABLES & LOCKED STYLING */
+        .table-responsive { border-radius: 12px; overflow: hidden; margin-top: 15px; }
+        .table {
+            background: rgba(11, 14, 20, 0.6);
+            color: #ffffff;
+            margin-bottom: 0;
+            border-color: rgba(255,255,255,0.05);
+        }
+        .table th {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--gold);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            padding: 12px 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .table td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 14px 8px;
+            font-size: 0.95rem;
+            border-color: rgba(255, 255, 255, 0.04);
+        }
+        .table tbody tr:hover {
+            background: var(--card-hover);
+        }
+
+        /* TEASER BLUR EFFECT */
+        .locked-container {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            user-select: none;
+        }
+        .blurred-teaser {
+            filter: blur(5px);
+            opacity: 0.4;
+            pointer-events: none;
+            letter-spacing: 1px;
+            font-family: monospace;
+        }
+        .lock-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255, 215, 0, 0.12);
+            border: 1px solid rgba(255, 215, 0, 0.35);
+            color: var(--gold);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* MODAL STYLING */
+        .modal-content {
+            background: var(--bg);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+        .modal-header {
+            background: linear-gradient(135deg, var(--green) 0%, #00B0FF 100%);
+            color: #0B0E14;
+            border-bottom: none;
+            padding: 18px 24px;
+        }
+        .modal-title { font-family: 'Paytone One', sans-serif; font-size: 1.4rem; }
+        .list-group-item { background: rgba(255,255,255,0.03); color: #e0e0e0; border-color: rgba(255,255,255,0.05); }
+        .list-group-item strong { color: var(--green); }
+        .copy-btn {
+            background: var(--gold); border: none; color: #0B0E14;
+            padding: 3px 10px; border-radius: 6px; margin-left: 8px;
+            font-size: 0.8rem; font-weight: bold; transition: opacity 0.2s;
+        }
+        .copy-btn:hover { opacity: 0.85; }
+
+        .loader {
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top: 3px solid var(--green);
+            border-radius: 50%;
+            width: 32px; height: 32px;
+            animation: spin 0.8s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <div id="splash-screen">
+        <div class="brand-title">
+            <span class="splash-line1">MZUKA</span>
+            <span class="splash-line2">TIPS</span>
+        </div>
+        <p class="mt-2 text-muted">Loading daily sure predictions...</p>
+    </div>
+
+    <div id="country-screen">
+        <h2>Select Your Country</h2>
+        <div id="country-buttons-container">
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <div id="main-app">
+        <main class="container">
+            
+            <header class="seo-header">
+                <h1>MzukaTips</h1>
+                <p>Premium Sure Soccer Tips & Daily Accumulators</p>
+            </header>
+
+            <section class="card">
+                <div class="card-header" style="background: linear-gradient(90deg, #FFD700, #FF8F00); color: #000;">
+                    🔥 Free Tip of the Day
+                </div>
+                <div class="card-body">
+                    <p id="free-tip-league" class="card-text mt-1" style="font-weight: bold; color: var(--gold); font-size: 1.05rem;"></p>
+                    <h3 class="card-title my-2" id="free-tip-time" style="color:#fff;">Loading...</h3>
+                    <p class="card-text fs-5"><strong id="free-tip-match">...</strong></p>
+                    <div class="p-2 rounded d-inline-block px-4" style="background: rgba(0,230,118,0.1); border: 1px solid var(--green);">
+                        <strong id="free-tip-pick" style="color: var(--green);">...</strong>
+                    </div>
+                </div>
+            </section>
+
+            <div id="packages-container">
+                <div class="loader"></div>
+            </div>
+
+            <section class="past-tips mt-5">
+                <h2 class="text-center mb-4" style="font-family:'Paytone One', sans-serif; color:var(--green); text-shadow: 0 0 10px var(--green-glow);">
+                    Past Tips History
+                </h2>
+                <div id="history-container">
+                    <div class="loader"></div>
+                </div>
+            </section>
+
+            <section class="text-center mt-5 mb-5 p-4 card">
+                <h4 class="mb-3" style="color:white; font-family:'Paytone One', sans-serif;">Need Help & Support?</h4>
+                <div>
+                    <a id="btn-whatsapp" href="#" class="btn btn-success m-1 px-4 py-2" style="border-radius: 10px; font-weight: 700;" rel="noopener noreferrer">WhatsApp</a>
+                    <a id="btn-twitter" href="#" class="btn btn-primary m-1 px-4 py-2" style="border-radius: 10px; font-weight: 700;" rel="noopener noreferrer">Twitter</a>
+                    <a id="btn-telegram" href="#" class="btn btn-info text-white m-1 px-4 py-2" style="border-radius: 10px; font-weight: 700;" rel="noopener noreferrer">Telegram</a>
+                </div>
+            </section>
+
+            <!-- PAYMENT MODAL -->
+            <div class="modal fade payment-modal" id="pay-modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="pay-modal-title">Buy Tips</h3>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-4">
+                            
+                            <!-- KENYA (Automated Instant Verification) -->
+                            <div class="pay-section" id="pay-ke" style="display:none;">
+                                <h5 class="text-warning text-center mb-3">Automatic Instant Access</h5>
+                                <div class="text-center mb-3">
+                                    <img id="till-image" src="" alt="Lipa na M-Pesa Till" style="max-width: 130px; border-radius: 12px; border: 2px solid var(--card-border);">
+                                </div>
+                                <ul class="list-group list-group-flush mb-3 rounded">
+                                    <li class="list-group-item">1. Go to Safaricom -> <strong>Buy Goods & Services</strong></li>
+                                    <li class="list-group-item" style="background: rgba(0, 230, 118, 0.15);">2. Till No: <strong id="till-number-display"></strong> (<span id="till-name-display"></span>) <button class="copy-btn" id="btn-copy-till">Copy</button></li>
+                                    <li class="list-group-item">3. Amount: <strong id="pay-modal-amount-ke" class="text-warning">KSh 0</strong></li>
+                                </ul>
+                                <div class="p-3 rounded" style="background-color: rgba(0,0,0,0.4); border: 1px solid var(--card-border);">
+                                    <h6 class="text-warning mb-2">Verify Confirmation Message</h6>
+                                    <textarea class="form-control mb-2" id="mpesa-message-input" rows="3" style="background:#121620; color:#fff; border: 1px solid #2a3245;" placeholder="Paste complete M-Pesa SMS here..."></textarea>
+                                    <button class="btn btn-custom w-100" id="verify-mpesa-btn">Verify Payment & Unlock</button>
+                                    <div id="mpesa-verification-result" class="mt-2 text-center" style="font-weight:bold; font-size: 0.9rem;"></div>
+                                </div>
+                            </div>
+
+                            <!-- DYNAMIC MANUAL PAYMENT -->
+                            <div class="pay-section" id="dynamic-manual-pay" style="display:none;"></div>
+
+                            <!-- GENERIC / FALLBACK -->
+                            <div class="pay-section" id="pay-generic" style="display:none;">
+                                <h5 class="text-warning text-center mb-3">Global Payment Support</h5>
+                                <ul class="list-group list-group-flush mb-3 rounded">
+                                    <li class="list-group-item">1. <strong>Package Price:</strong> <strong id="pay-modal-amount-generic" class="text-warning"></strong></li>
+                                    <li class="list-group-item">2. We accept <strong>Skrill, Binance (Crypto), Chipper Cash, and WorldRemit.</strong></li>
+                                    <li class="list-group-item" style="background: rgba(0, 230, 118, 0.15);">3. Click below to contact our 24/7 support team and request payment instructions.</li>
+                                </ul>
+                                <a id="btn-generic-wa" href="#" class="btn btn-custom w-100 mt-2" target="_blank">Chat with Support to Pay</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        // DEFAULT FALLBACK DATA IN CASE EXTERNAL JSON IS NOT AVAILABLE
+        const defaultData = {
+          "till_info": {
+            "name": "Statarea Systems",
+            "number": "668526",
+            "image": "https://images.unsplash.com/photo-1557992260-ec58e38d363c?auto=format&fit=crop&w=300&q=80"
+          },
+          "contact_details": {
+            "whatsapp_url": "https://wa.me/254713804279?text=I'm%20interested%20in%20your%20sure%20tips%20today",
+            "twitter_url": "https://twitter.com/victonic_sports",
+            "telegram_url": "https://t.me/+GEkAL_4kqyJjNDc0"
+          },
+          "countries": [
+            { "code": "ke", "name": "Kenya", "flag": "🇰🇪", "currency": "KSh", "rate_to_kes": 1, "type": "automated" },
+            {
+              "code": "ug", "name": "Uganda", "flag": "🇺🇬", "currency": "UGX", "rate_to_kes": 28.5, "type": "manual",
+              "methods": [
+                { "provider": "MTN Uganda (to Safaricom M-Pesa)", "phone": "254713804279", "steps": ["Dial *165# on your mobile line.", "Select 1: Send Money.", "Choose 3: International Transfer.", "Select 1: Safaricom M-Pesa.", "Enter recipient phone number: {phone}", "Enter amount in UGX ({amount}) and state reason.", "Enter your MTN MoMo PIN to authorize."] },
+                { "provider": "Airtel Uganda", "phone": "254739162763", "steps": ["Dial *185#.", "Select 1: Send Money.", "Choose 4: International Transfer.", "Select Kenya.", "Enter recipient phone number: {phone}", "Enter amount ({amount}), input transaction reason, and confirm with Airtel Money PIN."] }
+              ]
+            },
+            {
+              "code": "tz", "name": "Tanzania", "flag": "🇹🇿", "currency": "TZS", "rate_to_kes": 20.0, "type": "manual",
+              "methods": [
+                { "provider": "Vodacom M-Pesa Tanzania", "phone": "254713804279", "steps": ["Dial *150*00#.", "Select Send Money, then select International Transfers.", "Choose M-Pesa Kenya.", "Enter recipient phone number: {phone}", "Input amount in TZS ({amount}), review automated conversion rates, and enter M-Pesa PIN."] },
+                { "provider": "Airtel Tanzania", "phone": "254713804279", "steps": ["Dial *150*60#.", "Select 1: Send Money.", "Choose 5: Send Money Abroad.", "Select Kenya.", "Select 1: Mobile Wallet and choose either Airtel Kenya or M-Pesa Kenya.", "Enter recipient mobile number: {phone}", "Enter amount in TZS ({amount}), pick transfer reason, and enter Airtel Money PIN."] }
+              ]
+            },
+            {
+              "code": "rw", "name": "Rwanda", "flag": "🇷🇼", "currency": "RWF", "rate_to_kes": 10.0, "type": "manual",
+              "methods": [
+                { "provider": "MTN Rwanda", "phone": "254713804279", "steps": ["Dial *182#.", "Select Send Money, then select International Remittance / Cross Border.", "Choose Kenya and select destination wallet (M-Pesa or Airtel Money).", "Enter recipient phone number: {phone}", "Enter amount in RWF ({amount}) and confirm with MTN MoMo PIN."] },
+                { "provider": "Airtel Rwanda", "phone": "254713804279", "steps": ["Dial *182# or open MyAirtel App.", "Choose Airtel Money, then select Send Money.", "Click International and select Kenya.", "Enter phone number: {phone}, input amount ({amount}), and confirm using Airtel PIN."] }
+              ]
+            },
+            {
+              "code": "zm", "name": "Zambia", "flag": "🇿🇲", "currency": "ZMW", "rate_to_kes": 0.21, "type": "manual",
+              "methods": [
+                { "provider": "Airtel Zambia", "phone": "254713804279", "steps": ["Dial *115#.", "Navigate to Airtel Money, select Send Money, and choose International Transfer.", "Select Kenya as destination.", "Enter recipient phone number starting with country code 254: {phone}", "Input amount ({amount}), review currency exchange window, and enter Airtel T-PIN."] }
+              ]
+            },
+            {
+              "code": "mw", "name": "Malawi", "flag": "🇲🇼", "currency": "MWK", "rate_to_kes": 13.5, "type": "manual",
+              "methods": [
+                { "provider": "Airtel Malawi", "phone": "254713804279", "steps": ["Dial *211#.", "Navigate to Airtel Money, select Send Money, and choose International Transfer.", "Select Kenya as destination.", "Enter recipient phone number starting with country code 254: {phone}", "Input amount ({amount}), review currency exchange window, and enter Airtel T-PIN."] }
+              ]
+            }
+          ],
+          "free_tip": { "country": "England", "league": "Premier League", "time": "Today 17:00 EAT", "teamA": "Arsenal", "teamB": "Chelsea", "pick": "Pick: 1 & Over 1.5 Goals", "confidence": "92" },
+          "packages": [
+           
+            { "id": "odds2", "title": "2 Odds Package", "type": "flat", "price_kes": 100 },
+            { "id": "odds5", "title": "5 Odds Package", "type": "flat", "price_kes": 200 },
+            { "id": "odds10", "title": "10 Odds Package", "type": "flat", "price_kes": 300 },
+            { "id": "vip1000", "title": "VIP Tips Package", "type": "flat", "price_kes": 1000, "isMostPopular": true },
+            { "id": "jackpot", "title": "SportPesa & Betika Jackpots", "type": "jackpot", "jackpots": [ { "bookmaker": "SportPesa Mega", "amount_kes": 200 }, { "bookmaker": "Betika Midweek", "amount_kes": 150 } ] }
+          ],
+          "tips": {
+            "draw1": [ { "teamA": "Valencia", "teamB": "Sevilla", "tip": "Draw", "odds": "3.20" } ],
+            "draw2": [ { "teamA": "Everton", "teamB": "Fulham", "tip": "Draw", "odds": "3.40" }, { "teamA": "Lazio", "teamB": "Roma", "tip": "Draw", "odds": "3.10" } ],
+            "draw3": [ { "teamA": "Nantes", "teamB": "Rennes", "tip": "Draw", "odds": "3.15" }, { "teamA": "Genoa", "teamB": "Torino", "tip": "Draw", "odds": "3.00" }, { "teamA": "Mainz", "teamB": "Bremen", "tip": "Draw", "odds": "3.30" } ],
+            "odds2": [ { "teamA": "Man City", "teamB": "Burnley", "tip": "1 & Over 2.5", "odds": "2.10" } ],
+            "odds5": [ { "teamA": "Liverpool", "teamB": "Aston Villa", "tip": "1 & GG", "odds": "2.80" }, { "teamA": "Bayern", "teamB": "Dortmund", "tip": "Over 3.5", "odds": "1.90" } ],
+            "odds10": [ { "teamA": "Arsenal", "teamB": "Chelsea", "tip": "X2", "odds": "1.80" }, { "teamA": "Napoli", "teamB": "Milan", "tip": "1", "odds": "2.20" }, { "teamA": "PSG", "teamB": "Monaco", "tip": "GG & Over 2.5", "odds": "2.55" } ],
+            "vip1000": [ { "teamA": "Inter", "teamB": "Juventus", "tip": "1", "odds": "2.15" }, { "teamA": "Real Sociedad", "teamB": "Athletic Bilbao", "tip": "Under 2.5", "odds": "1.65" }, { "teamA": "Benfica", "teamB": "Porto", "tip": "GG", "odds": "1.85" } ],
+            "jackpot-sportpesa-mega": [ { "teamA": "Match 1", "teamB": "Team B", "tip": "1", "odds": "-" } ],
+            "jackpot-betika-midweek": [ { "teamA": "Match 1", "teamB": "Team B", "tip": "X", "odds": "-" } ]
+          },
+          "history": [
+            {
+              "date": "Yesterday",
+              "categories": {
+                "1 Draw": [ { "country": "spain", "teamA": "Getafe", "teamB": "Alaves", "prediction": "Draw", "score": "1-1", "odds": "3.10", "result": "WON" } ],
+                "2 Draws": [ { "country": "italy", "teamA": "Verona", "teamB": "Empoli", "prediction": "Draw", "score": "0-0", "odds": "3.25", "result": "WON" }, { "country": "france", "teamA": "Lens", "teamB": "Lille", "prediction": "Draw", "score": "1-1", "odds": "3.30", "result": "WON" } ],
+                "3 Draws": [ { "country": "germany", "teamA": "Bochum", "teamB": "Koln", "prediction": "Draw", "score": "2-2", "odds": "3.40", "result": "WON" }, { "country": "england", "teamA": "Crystal Palace", "teamB": "West Ham", "prediction": "Draw", "score": "1-1", "odds": "3.15", "result": "WON" }, { "country": "italy", "teamA": "Lecce", "teamB": "Cagliari", "prediction": "Draw", "score": "0-0", "odds": "3.00", "result": "WON" } ],
+                "2 Odds": [ { "country": "england", "teamA": "Arsenal", "teamB": "Chelsea", "prediction": "1", "score": "2-0", "odds": "2.10", "result": "WON" } ],
+                "5 Odds": [ { "country": "spain", "teamA": "Real Madrid", "teamB": "Sevilla", "prediction": "1 & Over 2.5", "score": "3-1", "odds": "2.30", "result": "WON" }, { "country": "germany", "teamA": "Bayern Munich", "teamB": "Stuttgart", "prediction": "1", "score": "2-0", "odds": "1.85", "result": "WON" }, { "country": "italy", "teamA": "Juventus", "teamB": "Torino", "prediction": "Under 2.5", "score": "1-0", "odds": "1.50", "result": "WON" } ],
+                "10 Odds": [ { "country": "france", "teamA": "PSG", "teamB": "Marseille", "prediction": "1 & GG", "score": "3-1", "odds": "2.80", "result": "WON" }, { "country": "england", "teamA": "Liverpool", "teamB": "Newcastle", "prediction": "1", "score": "2-0", "odds": "1.75", "result": "WON" }, { "country": "italy", "teamA": "Napoli", "teamB": "Roma", "prediction": "GG", "score": "1-1", "odds": "1.90", "result": "WON" }, { "country": "spain", "teamA": "Barcelona", "teamB": "Girona", "prediction": "Over 2.5", "score": "2-1", "odds": "1.65", "result": "WON" } ],
+                "VIP Tips": [ { "country": "italy", "teamA": "Inter", "teamB": "Lazio", "prediction": "1", "score": "2-0", "odds": "1.95", "result": "WON" }, { "country": "england", "teamA": "Man City", "teamB": "Aston Villa", "prediction": "1 & Over 2.5", "score": "3-1", "odds": "2.05", "result": "WON" }, { "country": "germany", "teamA": "Leverkusen", "teamB": "Dortmund", "prediction": "GG & Over 2.5", "score": "2-2", "odds": "2.15", "result": "WON" } ]
+              }
+            }
+          ]
+        };
+
+        let currentCountry = 'ke';
+        let currentCurrency = 'KSh';
+        let currentRateToKes = 1;
+        
+        let payModal = null;
+        let expectedKesAmount = 0; 
+        let unlockedPackages = []; 
+        let currentPayingPackageId = null; 
+        let appData = null;
+
+        function getTodayEAT() {
+            return new Date().toLocaleDateString("en-CA", {timeZone: "Africa/Nairobi"});
+        }
+
+        function loadUnlockedState() {
+            const todayEAT = getTodayEAT();
+            let stored = JSON.parse(localStorage.getItem('mzukatips_unlocked') || '{"date":"","packages":[]}');
+            if (stored.date !== todayEAT) {
+                unlockedPackages = [];
+                localStorage.removeItem('mzukatips_unlocked');
+            } else {
+                unlockedPackages = stored.packages;
+            }
+        }
+
+        function saveUnlockedState(pkgId) {
+            const todayEAT = getTodayEAT();
+            let stored = JSON.parse(localStorage.getItem('mzukatips_unlocked') || '{"date":"","packages":[]}');
+            if (stored.date !== todayEAT) { stored = { date: todayEAT, packages: [] }; }
+            if (!stored.packages.includes(pkgId)) { stored.packages.push(pkgId); }
+            localStorage.setItem('mzukatips_unlocked', JSON.stringify(stored));
+            unlockedPackages = stored.packages;
+        }
+
+        // INITIALIZE INITIAL HISTORY STATE FOR COUNTRY SCREEN
+        if (window.history && window.history.replaceState) {
+            window.history.replaceState({ page: 'country' }, '');
+        }
+
+        // STATE-BASED POPSTATE HANDLER (FIXES MODAL CLOSING ISSUE)
+        window.addEventListener('popstate', function (e) {
+            const state = e.state;
+            if (!state) return;
+
+            if (state.page === 'main') {
+                // If navigating back to 'main' state (e.g. from modal), hide modal & show main app
+                if (payModal) payModal.hide();
+                else $('#pay-modal').modal('hide');
+                
+                $('#country-screen').hide();
+                $('#main-app').show();
+            } else if (state.page === 'country') {
+                // If navigating back to 'country' state (e.g. from main app), hide modal & main app
+                if (payModal) payModal.hide();
+                else $('#pay-modal').modal('hide');
+
+                $('#main-app').hide();
+                $('#country-screen').css('display', 'flex');
+            }
+        });
+
+        $(document).ready(function() {
+            loadUnlockedState();
+            payModal = new bootstrap.Modal(document.getElementById('pay-modal'));
+
+            // Sync browser history state when modal is closed via UI (e.g., 'X' button or backdrop click)
+            $('#pay-modal').on('hidden.bs.modal', function () {
+                if (window.history.state && window.history.state.page === 'modal') {
+                    window.history.back();
+                }
+            });
+
+            // Load Application Data
+            fetch('external.json')
+                .then(res => res.json())
+                .then(data => { initAppWithData(data); })
+                .catch(err => {
+                    console.warn("External JSON file not found or failed to load. Using fallback data.", err);
+                    initAppWithData(defaultData);
+                });
+
+            $('#btn-copy-till').click(function() {
+                const tillNumber = appData.till_info.number;
+                navigator.clipboard.writeText(tillNumber).then(() => {
+                    const btn = $(this);
+                    const originalText = btn.text();
+                    btn.text('Copied!');
+                    setTimeout(() => btn.text(originalText), 1500);
+                });
+            });
+
+            $('#verify-mpesa-btn').click(function() {
+                const msg = $('#mpesa-message-input').val().trim();
+                const $result = $('#mpesa-verification-result');
+
+                if (!msg) { $result.text('Please paste your M-Pesa confirmation SMS.').css('color', 'var(--red)'); return; }
+
+                const codeMatch = msg.match(/^[A-Z0-9]{10}/i);
+                if (!codeMatch || !msg.toLowerCase().includes('confirmed')) { 
+                    $result.text('Invalid M-Pesa message format.').css('color', 'var(--red)'); 
+                    return; 
+                }
+                
+                const mpesaCode = codeMatch[0].toUpperCase();
+                let usedCodes = JSON.parse(localStorage.getItem('usedMpesaCodes') || '[]');
+                if (usedCodes.includes(mpesaCode)) { 
+                    $result.text('This M-Pesa receipt code has already been used.').css('color', 'var(--red)'); 
+                    return; 
+                }
+
+                if (!msg.toLowerCase().includes(appData.till_info.name.toLowerCase())) {
+                    $result.text(`Invalid Till Name. Ensure payment was made to ${appData.till_info.name}.`).css('color', 'var(--red)');
+                    return;
+                }
+
+                const amountMatch = msg.match(/Ksh\s*([\d,]+\.\d{2})/i);
+                if (!amountMatch) { 
+                    $result.text('Could not detect amount in message. Ensure message is full.').css('color', 'var(--red)'); 
+                    return; 
+                }
+                
+                const paidAmount = parseFloat(amountMatch[1].replace(/,/g, ''));
+                if (paidAmount < expectedKesAmount) { 
+                    $result.text(`Insufficient amount. Package price is KSh ${expectedKesAmount}.`).css('color', 'var(--red)'); 
+                    return; 
+                }
+
+                const todayEATObj = new Date(new Date().toLocaleString("en-US", {timeZone: "Africa/Nairobi"}));
+                const d = todayEATObj.getDate();
+                const m = todayEATObj.getMonth() + 1;
+                const yy = todayEATObj.getFullYear().toString().slice(-2);
+                
+                const dStr = d < 10 ? `0?${d}` : d;
+                const mStr = m < 10 ? `0?${m}` : m;
+                const dateRegex = new RegExp(`${dStr}/${mStr}/(?:20)?${yy}`, 'i');
+                
+                if (!dateRegex.test(msg)) {
+                    $result.text('Date mismatch. Payment SMS must be from today.').css('color', 'var(--red)');
+                    return;
+                }
+
+                usedCodes.push(mpesaCode);
+                localStorage.setItem('usedMpesaCodes', JSON.stringify(usedCodes));
+                $result.text('Payment Verified Successfully! Unlocking tips...').css('color', 'var(--green)');
+                
+                setTimeout(() => {
+                    if (currentPayingPackageId) saveUnlockedState(currentPayingPackageId);
+                    payModal.hide();
+                    renderTips(); 
+                }, 1400);
+            });
+        });
+
+        function initAppWithData(data) {
+            appData = data;
+            buildCountryScreen(appData.countries);
+            
+            setTimeout(() => {
+                $('#splash-screen').css('opacity', '0');
+                setTimeout(() => {
+                    $('#splash-screen').hide();
+                    $('#country-screen').css('display', 'flex');
+                }, 500);
+            }, 1000);
+        }
+
+        function buildCountryScreen(countries) {
+            const container = $('#country-buttons-container');
+            container.empty();
+            (countries || []).forEach(c => {
+                container.append(`<button class="country-btn" onclick="selectCountry('${c.code}', '${c.currency}', ${c.rate_to_kes})"><span>${c.flag}</span> <span>${c.name}</span></button>`);
+            });
+        }
+
+        window.selectCountry = function(countryCode, currency, rate) {
+            currentCountry = countryCode;
+            currentCurrency = currency;
+            currentRateToKes = rate;
+            
+            // Push 'main' page state into history stack
+            if (window.history && window.history.pushState) {
+                window.history.pushState({ page: 'main' }, '');
+            }
+
+            $('#country-screen').hide();
+            $('#main-app').fadeIn();
+            
+            populateContactsAndTill(appData);
+            renderFreeTip(appData.free_tip);
+            renderPackages(appData.packages);
+            renderTips();
+            renderHistory(appData.history);
+        };
+
+        const COUNTRY_FLAGS = { 'england': '🏴󠁧󠁢󠁥󠁮󠁧󠁿', 'spain': '🇪🇸', 'italy': '🇮🇹', 'germany': '🇩🇪', 'france': '🇫🇷', 'kenya': '🇰🇪', 'uganda': '🇺🇬', 'tanzania': '🇹🇿', 'rwanda': '🇷🇼', 'zambia': '🇿🇲', 'malawi': '🇲🇼' };
+        function flagFor(country) { return COUNTRY_FLAGS[(country || '').toLowerCase()] || '⚽️'; }
+
+        function populateContactsAndTill(data) {
+            $('#btn-whatsapp').attr('href', data.contact_details.whatsapp_url);
+            $('#btn-twitter').attr('href', data.contact_details.twitter_url);
+            $('#btn-telegram').attr('href', data.contact_details.telegram_url);
+            $('#btn-generic-wa').attr('href', data.contact_details.whatsapp_url);
+
+            $('#till-name-display').text(data.till_info.name);
+            $('#till-number-display').text(data.till_info.number);
+            $('#till-image').attr('src', data.till_info.image);
+        }
+
+        function renderFreeTip(tip) {
+            $('#free-tip-league').text(`${flagFor(tip.country)} ${tip.country} - ${tip.league}`);
+            $('#free-tip-time').text(tip.time);
+            $('#free-tip-match').text(`${tip.teamA} VS ${tip.teamB}`);
+            $('#free-tip-pick').text(`${tip.pick} (Confidence: ${tip.confidence}%)`);
+        }
+
+        function formatLocalPrice(kes) {
+            const local = Math.round(kes * currentRateToKes);
+            return `${currentCurrency} ${local.toLocaleString()}`;
+        }
+
+        function accentColorFor(pkgId) {
+            const id = (pkgId || '').toLowerCase();
+            if (id.includes('draw')) return 'linear-gradient(135deg, #1E88E5 0%, #1565C0 100%)';
+            if (id.includes('odds') || id.includes('vip')) return 'linear-gradient(135deg, #E91E63 0%, #AD1457 100%)';
+            if (id.includes('correct') || id.includes('jackpot')) return 'linear-gradient(135deg, #FFB300 0%, #FF8F00 100%)';
+            return 'linear-gradient(135deg, #00E676 0%, #00A844 100%)';
+        }
+
+        function renderPackages(packages) {
+            const container = $('#packages-container');
+            container.empty();
+            
+            packages.forEach(pkg => {
+                const accentGrad = accentColorFor(pkg.id);
+                const isJackpot = pkg.type === 'jackpot';
+                let priceHtml = '', actionHtml = '';
+
+                if (isJackpot) {
+                    if (currentCountry !== 'ke') return; 
+                    let rows = '';
+                    (pkg.jackpots || []).forEach(j => {
+                        const jackpotPkgId = `jackpot-${j.bookmaker.replace(/\s+/g, '-').toLowerCase()}`;
+                        const isJkpUnlocked = unlockedPackages.includes(jackpotPkgId);
+                        
+                        rows += `<div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span style="font-weight:700;">${j.bookmaker}</span>
+                                    ${!isJkpUnlocked ? 
+                                      `<button class="btn btn-sm btn-custom" onclick="openPaymentModal('${jackpotPkgId}', '${j.bookmaker}', ${j.amount_kes})">${formatLocalPrice(j.amount_kes)}</button>` :
+                                      `<span class="badge bg-success">UNLOCKED</span>`
+                                    }
+                                 </div>
+                                 <div class="table-responsive"><table class="table" id="table-${jackpotPkgId}"><thead><tr><th>Match</th><th>Tip</th><th>Odds</th></tr></thead><tbody></tbody></table></div>`;
+                    });
+                    priceHtml = rows;
+                } else {
+                    priceHtml = `<h3 class="card-title my-1" style="color:#fff;">Price: <span class="text-warning font-weight-bold">${formatLocalPrice(pkg.price_kes)}</span></h3>`;
+                    
+                    if (unlockedPackages.includes(pkg.id) && currentCountry === 'ke') {
+                        actionHtml = `<button class="btn btn-success mt-3 w-100 font-weight-bold" style="border-radius:10px; padding:12px;" disabled>✓ Ticket Unlocked</button>`;
+                    } else {
+                        const btnText = (currentCountry === 'ke') ? 'Buy Ticket Now' : 'Get via WhatsApp';
+                        actionHtml = `<button class="btn btn-custom mt-3 w-100" onclick="openPaymentModal('${pkg.id}', '${pkg.title}', ${pkg.price_kes})">${btnText}</button>`;
+                    }
+                }
+
+                container.append(`
+                    <section class="card" data-pkg-id="${pkg.id}">
+                        <div class="card-header" style="background:${accentGrad}; color:#ffffff;">${pkg.title}</div>
+                        <div class="card-body">
+                            ${pkg.isMostPopular ? '<div class="pkg-badge">🔥 MOST POPULAR</div>' : ''}
+                            ${priceHtml}
+                            ${!isJackpot ? `<div class="table-responsive"><table class="table" id="table-${pkg.id}"><thead><tr><th>Match</th><th>Tip</th><th>Odds</th></tr></thead><tbody></tbody></table></div>` : ''}
+                            ${actionHtml}
+                        </div>
+                    </section>`);
+            });
+        }
+
+        function renderTips() {
+            renderPackages(appData.packages);
+            
+            Object.keys(appData.tips).forEach(pkgId => {
+                const $table =$(`#table-${pkgId}`);
+                if (!$table.length) return;
+                
+                const data = appData.tips[pkgId];
+                const tbody = $table.find('tbody');
+                tbody.empty();
+                
+                const isUnlocked = unlockedPackages.includes(pkgId) && currentCountry === 'ke';
+                const isDrawPackage = pkgId.toLowerCase().includes('draw');
+                
+                data.forEach(item => {
+                    let teamA, teamB, tipDisplay, oddsDisplay;
+
+                    if (isDrawPackage) {
+                        teamA = isUnlocked ? item.teamA : `<div class="locked-container"><span class="blurred-teaser">Team Alpha</span> <span class="lock-pill">🔒 Locked</span></div>`;
+                        teamB = isUnlocked ? item.teamB : `<div class="locked-container"><span class="blurred-teaser">Team Beta</span></div>`;
+                        tipDisplay = `<span style="color:var(--green); font-weight:bold;">${item.tip}</span>`;
+                        oddsDisplay = `<span class="badge bg-secondary">${item.odds}</span>`;
+                    } else {
+                        teamA = item.teamA;
+                        teamB = item.teamB;
+                        tipDisplay = isUnlocked ? `<span style="color:var(--green); font-weight:bold;">${item.tip}</span>` : `<div class="locked-container"><span class="blurred-teaser">1 & Over 2.5</span> <span class="lock-pill">🔒 Locked</span></div>`;
+                        oddsDisplay = isUnlocked ? `<span class="badge bg-secondary">${item.odds}</span>` : '-';
+                    }
+
+                    tbody.append(`<tr><td>${teamA} ${isUnlocked || !isDrawPackage ? 'VS' : ''} ${teamB}</td><td>${tipDisplay}</td><td>${oddsDisplay}</td></tr>`);
+                });
+            });
+        }
+
+        window.openPaymentModal = function(pkgId, title, kes) {
+            currentPayingPackageId = pkgId; 
+            expectedKesAmount = kes;
+
+            // Push 'modal' state into history stack
+            if (window.history && window.history.pushState) {
+                window.history.pushState({ page: 'modal' }, '');
+            }
+            
+            $('#pay-modal-title').text(title);
+            $('.pay-section').hide();
+            
+            const countryData = (appData.countries || []).find(c => c.code === currentCountry);
+            const localAmountStr = formatLocalPrice(kes);
+            
+            if (currentCountry === 'ke' || (countryData && countryData.type === 'automated')) {
+                $('#pay-modal-amount-ke').text(`KSh ${kes.toLocaleString()}`);
+                $('#mpesa-message-input').val('');
+                $('#mpesa-verification-result').text('');
+                $('#pay-ke').show();
+            } else if (countryData && countryData.methods) {
+                const container = $('#dynamic-manual-pay');
+                container.empty();
+                
+                let methodsHtml = `<h5 class="text-warning text-center mb-3">${countryData.flag} How to Send Money (${countryData.name})</h5>`;
+                
+                countryData.methods.forEach(m => {
+                    methodsHtml += `
+                        <div class="mb-3 p-3 rounded text-start" style="background: rgba(255,255,255,0.04); border: 1px solid var(--card-border);">
+                            <h6 style="color: var(--gold); font-weight: bold; margin-bottom: 10px;">${m.provider}</h6>
+                            <ol class="ps-3 mb-0" style="font-size: 0.92rem; line-height: 1.6; color: #e0e0e0;">`;
+                    
+                    m.steps.forEach(step => {
+                        let formattedStep = step
+                            .replace('{amount}', `<strong class="text-success">${localAmountStr}</strong>`)
+                            .replace('{phone}', `<strong class="text-warning">${m.phone}</strong>`);
+                        methodsHtml += `<li class="mb-1">${formattedStep}</li>`;
+                    });
+                    
+                    methodsHtml += `</ol></div>`;
+                });
+                
+                const waBase = appData.contact_details.whatsapp_url.split('?')[0];
+                const waMsg = encodeURIComponent(`Hello, I have paid ${localAmountStr} for ${title} from ${countryData.name}. Here is my mobile money payment confirmation:`);
+                const waUrl = `${waBase}?text=${waMsg}`;
+                
+                methodsHtml += `
+                    <div class="p-3 rounded text-center mb-3" style="background: rgba(0, 230, 118, 0.12); border: 1px solid var(--green);">
+                        <p class="mb-2" style="font-size:0.9rem;"><strong>After sending payment:</strong> Copy and forward your payment confirmation SMS to WhatsApp to get access instantly.</p>
+                        <a href="${waUrl}" class="btn btn-custom w-100" target="_blank">Forward SMS to WhatsApp</a>
+                    </div>
+                `;
+                
+                container.html(methodsHtml).show();
+            } else {
+                $('#pay-modal-amount-generic').text(localAmountStr);
+                $('#pay-generic').show();
+            }
+            
+            payModal.show();
+        };
+
+        function renderHistory(data) {
+            const container = $('#history-container');
+            container.empty();
+            if (!data || data.length === 0) { container.html('<p class="text-center text-muted">No historical records available.</p>'); return; }
+
+            data.forEach(day => {
+                for (const catName in day.categories) {
+                    const matches = day.categories[catName];
+                    let totalOdds = 1.0, tableRows = '';
+                    
+                    matches.forEach(m => {
+                        const isWon = m.result === 'WON';
+                        const badgeBg = isWon ? 'rgba(0,230,118,0.2)' : 'rgba(255,82,82,0.2)';
+                        const badgeColor = isWon ? 'var(--green)' : 'var(--red)';
+                        if (m.odds && !isNaN(m.odds)) totalOdds *= parseFloat(m.odds);
+
+                        tableRows += `<tr>
+                            <td>${flagFor(m.country)} ${m.teamA} VS ${m.teamB}</td>
+                            <td><strong>${m.prediction}</strong> (${m.score})</td>
+                            <td><span class="badge bg-dark">${m.odds}</span></td>
+                            <td><span class="badge" style="background:${badgeBg}; color:${badgeColor}; border: 1px solid ${badgeColor};">${m.result}</span></td>
+                        </tr>`;
+                    });
+
+                    container.append(`
+                        <div class="card mb-3">
+                            <div class="card-header" style="background: rgba(255,255,255,0.05); color: var(--gold); border-bottom: 1px solid var(--card-border);">
+                                📅 ${day.date} — ${catName}
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive"><table class="table"><thead><tr><th>Match</th><th>Tip (Score)</th><th>Odds</th><th>Status</th></tr></thead><tbody>${tableRows}</tbody></table></div>
+                                <div class="mt-2 text-end" style="color:var(--gold); font-weight:bold;">Accumulated Odds: ${totalOdds.toFixed(2)}</div>
+                            </div>
+                        </div>`);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
