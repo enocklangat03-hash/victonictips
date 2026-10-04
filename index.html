@@ -6,24 +6,24 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     
     <!-- SEO OPTIMIZATION -->
-    <meta name="author" content="Victonic Tips">
-    <meta name="description" content="Victonic Tips provides sure soccer betting tips, daily high odds accumulators, correct score predictions, and winning jackpot picks. Get today's sure bets.">
-    <meta name="keywords" content="soccer predictions, betting tips, sure tips, football odds, correct score, jackpot predictions, Victonic Tips, free tips">
+    <meta name="author" content="mzukatips">
+    <meta name="description" content="mzukatips provides sure soccer betting tips, daily high odds accumulators, correct score predictions, and winning jackpot picks. Get today's sure bets.">
+    <meta name="keywords" content="soccer predictions, betting tips, sure tips, football odds, correct score, jackpot predictions, mzukatips, free tips">
     <link rel="canonical" href="https://mzukatips.co.ke/">
     
     <!-- OPEN GRAPH / SOCIAL MEDIA -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mzukatips.co.ke/">
-    <meta property="og:title" content="Victonic Tips | Sure Soccer Betting Tips & Predictions">
+    <meta property="og:title" content="mzukatips | Sure Soccer Betting Tips & Predictions">
     <meta property="og:description" content="Get daily sure odds accumulators, correct score predictions and premium jackpot picks. Join mzukatips for guaranteed winning tips.">
     <meta property="og:image" content="https://mzukatips.co.ke/social-banner.jpg">
 
     <!-- TWITTER CARDS -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Victonic Tips | Sure Soccer Betting Tips">
+    <meta name="twitter:title" content="mzukatips | Sure Soccer Betting Tips">
     <meta name="twitter:description" content="Get daily sure odds accumulators, correct score predictions and premium jackpot picks.">
     
-    <title>Victonic Tips | Sure Soccer Betting Tips & Daily Predictions</title>
+    <title>MzukaTips | Sure Soccer Betting Tips & Daily Predictions</title>
 
     <link rel="icon" type="image/gif" href="/tab.gif"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -290,7 +290,7 @@
 
     <div id="splash-screen">
         <div class="brand-title">
-            <span class="splash-line1">Victonic</span>
+            <span class="splash-line1">MZUKA</span>
             <span class="splash-line2">TIPS</span>
         </div>
         <p class="mt-2 text-muted">Loading daily sure predictions...</p>
@@ -307,7 +307,7 @@
         <main class="container">
             
             <header class="seo-header">
-                <h1>Victonic Tips</h1>
+                <h1>MzukaTips</h1>
                 <p>Premium Sure Soccer Tips & Daily Accumulators</p>
             </header>
 
@@ -318,8 +318,8 @@
                 <div class="card-body">
                     <p id="free-tip-league" class="card-text mt-1" style="font-weight: bold; color: var(--gold); font-size: 1.05rem;"></p>
                     <h3 class="card-title my-2" id="free-tip-time" style="color:#fff;">Loading...</h3>
-                    <p class="card-text fs-5" style="color:#fff;"><strong id="free-tip-match">...</strong></p>
-                    <div class="p-2 rounded d-inline-block px-4" style="background: rgba(0,230,118,0.1); border: 1px solid var(--green);">
+                    <p class="card-text fs-5"><strong id="free-tip-match">...</strong></p>
+                    <div class="p-2 rounded d-inline-block px-4" style="background: rgba(0,230,118,0.1); border: 1px solid var(--white);">
                         <strong id="free-tip-pick" style="color: var(--green);">...</strong>
                     </div>
                 </div>
@@ -405,8 +405,8 @@
         // DEFAULT FALLBACK DATA IN CASE EXTERNAL JSON IS NOT AVAILABLE
         const defaultData = {
           "till_info": {
-            "name": "Statarea Systems",
-            "number": "668526",
+            "name": "Quick Call Selections",
+            "number": "5150225",
             "image": "https://images.unsplash.com/photo-1557992260-ec58e38d363c?auto=format&fit=crop&w=300&q=80"
           },
           "contact_details": {
@@ -414,19 +414,31 @@
             "twitter_url": "https://twitter.com/victonic_sports",
             "telegram_url": "https://t.me/+GEkAL_4kqyJjNDc0"
           },
-          "countries": [
-            { "code": "ke", "name": "Kenya", "flag": "🇰🇪", "currency": "KSh", "rate_to_kes": 1, "type": "automated" }
+
             
+          "countries": [
+            { "code": "ke", "name": "Kenya", "flag": "🇰🇪", "currency": "KSh", "rate_to_kes": 1, "type": "automated" },
+            {
+              "code": "ug", "name": "Uganda", "flag": "🇺🇬", "currency": "UGX", "rate_to_kes": 28.5, "type": "manual",
+              "methods": [
+                { "provider": "MTN Uganda (to Safaricom M-Pesa)", "phone": "254713804279", "steps": ["Dial *165# on your mobile line.", "Select 1: Send Money.", "Choose 3: International Transfer.", "Select 1: Safaricom M-Pesa.", "Enter recipient phone number: {phone}", "Enter amount in UGX ({amount}) and state reason.", "Enter your MTN MoMo PIN to authorize."] },
+                { "provider": "Airtel Uganda", "phone": "254739162763", "steps": ["Dial *185#.", "Select 1: Send Money.", "Choose 4: International Transfer.", "Select Kenya.", "Enter recipient phone number: {phone}", "Enter amount ({amount}), input transaction reason, and confirm with Airtel Money PIN."] }
+              ]
+            }
           ],
-          "free_tip": { "country": "England", "league": "Premier League", "time": "Today 17:00 EAT", "teamA": "Arsenal", "teamB": "Chelsea", "pick": "Pick: 1 & Over 1.5 Goals", "confidence": "92" },
+            
+          "free_tip": { "country": "England", "league": "Premier League", "time": "Today 17:00 EAT", "teamA": "Arsenal", "teamB": "Chelsea", "pick": "Pick: 1", "confidence": "92" },
           "packages": [
-           
+            { "id": "draw1", "title": "1 Draw Package", "type": "flat", "price_kes": 150 },
+            { "id": "draw2", "title": "2 Draws Package", "type": "flat", "price_kes": 250 },
+            { "id": "draw3", "title": "3 Draws Package", "type": "flat", "price_kes": 350 },
             { "id": "odds2", "title": "2 Odds Package", "type": "flat", "price_kes": 100 },
             { "id": "odds5", "title": "5 Odds Package", "type": "flat", "price_kes": 200 },
             { "id": "odds10", "title": "10 Odds Package", "type": "flat", "price_kes": 300 },
             { "id": "vip1000", "title": "VIP Tips Package", "type": "flat", "price_kes": 1000, "isMostPopular": true },
             { "id": "jackpot", "title": "SportPesa & Betika Jackpots", "type": "jackpot", "jackpots": [ { "bookmaker": "SportPesa Mega", "amount_kes": 200 }, { "bookmaker": "Betika Midweek", "amount_kes": 150 } ] }
           ],
+            
           "tips": {
             "draw1": [ { "teamA": "Valencia", "teamB": "Sevilla", "tip": "Draw", "odds": "3.20" } ],
             "draw2": [ { "teamA": "Everton", "teamB": "Fulham", "tip": "Draw", "odds": "3.40" }, { "teamA": "Lazio", "teamB": "Roma", "tip": "Draw", "odds": "3.10" } ],
@@ -438,6 +450,8 @@
             "jackpot-sportpesa-mega": [ { "teamA": "Match 1", "teamB": "Team B", "tip": "1", "odds": "-" } ],
             "jackpot-betika-midweek": [ { "teamA": "Match 1", "teamB": "Team B", "tip": "X", "odds": "-" } ]
           },
+
+            
           "history": [
             {
               "date": "Yesterday",
