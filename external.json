@@ -20,13 +20,13 @@
     }
   
   "free_tip": {
-    "country": "England",
-    "league": "Premier League",
-    "time": "Today 17:00 EAT",
-    "teamA": "Arsenal",
-    "teamB": "Chelsea",
-    "pick": "Pick: 1 & Over 1.5 Goals",
-    "confidence": "92"
+    "country": "International,",
+    "league": "UEFA Nations League",
+    "time": "Today 9:45 EAT",
+    "teamA": "Greece",
+    "teamB": "Germany",
+    "pick": "Pick: Over 2.5 Goals",
+    "confidence": "98"
   },
 
   
